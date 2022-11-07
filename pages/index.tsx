@@ -1,24 +1,26 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import { PollsList } from "../components/Polls/PollsList";
+import { usePolls } from "../hooks/usePolls";
+import { Poll } from "../types/polls";
 
-export default function Home() {
+export default function Home({ polls }: { polls: Poll[] }) {
   return (
-    <div>
-      <Head>
-        <title>Voterr</title>
-        <meta name="description" content="Voterr App" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <div className='font-semibold'>
-          Ola Mundfo
-        </div>
-      </main>
-
-      <footer>
-        
-      </footer>
+    <div className="px-4 py-2">
+      <form className="flex items-center gap-2">
+        <input type="text" className="input w-full" placeholder="Search" />
+        <button className="p-2 rounded-md bg-green-700">Search</button>
+      </form>
+      <PollsList polls={polls} />
     </div>
-  )
+  );
+}
+
+export async function getServerSideProps() {
+  const { list } = usePolls();
+  const response = await list(1);
+
+  return {
+    props: {
+      polls: response.items,
+    },
+  };
 }

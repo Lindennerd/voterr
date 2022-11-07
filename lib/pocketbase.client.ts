@@ -9,6 +9,10 @@ export class PocketbaseClient {
 
     constructor() {
         this.client = new Pocketbase("http://localhost:8090");
+        this.client.beforeSend = (url, reqConfig) => {
+            delete reqConfig.signal;
+            return reqConfig;
+        }
     }
 
     public static getInstance(): PocketbaseClient {
