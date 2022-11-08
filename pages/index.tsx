@@ -4,7 +4,7 @@ import { Poll } from "../types/polls";
 
 export default function Home({ polls }: { polls: Poll[] }) {
   return (
-    <div className="px-4 py-2">
+    <div className="px-4 py-2 flex flex-col gap-4">
       <form className="flex items-center gap-2">
         <input type="text" className="input w-full" placeholder="Search" />
         <button className="p-2 rounded-md bg-green-700">Search</button>
