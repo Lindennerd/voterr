@@ -10,14 +10,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </Head>
       <main className="h-screen flex flex-col">
         <header className="flex flex-row justify-between items-center p-4 w-full bg-gray-700">
-          <div>Voterr</div>
+          <Link href="/" className="flex items-center gap-2 hover:bg-gray-800 p-1 rounded-md transition-all">
+            <img src="/voterr.logo.svg" alt="app logo" width={32} className="bg-white rounded-md" />
+            Voterr
+          </Link>
           <nav className="space-x-2">
             <Link href="home">Home</Link>   
             <Link href="home">Home</Link>
             <Link href="home">Home</Link>
           </nav>
         </header>
-        <section>{children}</section>
+        <section className="flex items-center justify-center">
+          <div className="max-w-6xl flex-1">
+            {children}
+          </div>
+        </section>
         <footer className="absolute w-full bottom-0 p-4 flex justify-center items-center border-gray-700 border-t-2">
           <span>
             Developed by{" "}

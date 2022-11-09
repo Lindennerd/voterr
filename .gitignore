@@ -36,4 +36,4 @@ yarn-error.log*
 next-env.d.ts
 
 # pocketbase data dir
-pb_data/
+/pb_data

@@ -16,7 +16,7 @@ function PollItem({ poll }: { poll: Poll }) {
   const { format } = useFormatDate();
 
   return (
-    <Link href={`/poll/${poll.slug}`}>
+    <Link href={`/poll/${poll.id}`}>
       <div className="py-4 px-2 border border-gray-700 bg-gray-700 rounded-md shadow-sm hover:shadow-lg flex flex-wrap items-center justify-between gap-2 transition-all">
         <div className="flex items-center gap-2">
           <ChatBubble /> <span> {poll.title}</span>

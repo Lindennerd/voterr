@@ -5,7 +5,7 @@ export default function Document() {
     <Html>
       <Head>
         <meta name="description" content="Voterr App" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/voterr.logo.svg" />
       </Head>
       <body className='bg-gray-600 text-white'>
         <Main />

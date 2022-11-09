@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="75.159 66.879 227.389 217.197" xmlns="http://www.w3.org/2000/svg">
+  <rect x="98.726" y="204.459" width="58.599" height="61.783" style="fill: rgb(75, 219, 255);" rx="2.548" ry="2.548"/>
+  <rect x="157.624" y="141" width="58.599" height="125.477" style="fill: rgb(255, 122, 13);" rx="4.459" ry="4.459"/>
+  <rect x="215.923" y="81.484" width="58.599" height="184.713" style="fill: rgb(255, 24, 151); stroke-linecap: round;" rx="3.822" ry="3.822"/>
+  <rect x="80.892" y="69.427" width="215.923" height="210.828" style="fill: none; stroke-width: 2px; paint-order: stroke; stroke: rgb(0, 0, 0);" rx="15.924" ry="15.924"/>
+</svg>
