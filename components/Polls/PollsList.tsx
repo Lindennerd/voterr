@@ -22,8 +22,12 @@ function PollItem({ poll }: { poll: Poll }) {
           <ChatBubble /> <span> {poll.title}</span>
         </div>
         <div className="flex items-center gap-2">
-          <Calendar />
-          <span> Valid Until: {format(poll.validUntil)}</span>
+          {poll.validUntil && (
+            <>
+              <Calendar />
+              <span> Valid Until: {format(poll.validUntil)}</span>
+            </>
+          )}
         </div>
         <div className="basis-full h-0"></div>
         <div>

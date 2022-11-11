@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-    .input {
-        @apply outline-none p-2 rounded-md border border-gray-800 focus:border-gray-400 text-white bg-gray-800
-    }
+  .input {
+    @apply outline-none p-2 rounded-md border border-gray-800 focus:border-gray-400 text-white bg-gray-800;
+  }
 }

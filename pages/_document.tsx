@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -7,10 +7,10 @@ export default function Document() {
         <meta name="description" content="Voterr App" />
         <link rel="icon" href="/voterr.logo.svg" />
       </Head>
-      <body className='bg-gray-600 text-white'>
+      <body className="bg-gray-600 text-white">
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }

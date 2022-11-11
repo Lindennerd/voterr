@@ -2,7 +2,7 @@ import { useState } from "react";
 import { VoteForm } from "../../components/Polls/VoteForm";
 import { useFormatDate } from "../../hooks/useFormatDate";
 import { usePolls } from "../../hooks/usePolls";
-import { Poll, Option } from "../../types/polls";
+import { Option, Poll } from "../../types/polls";
 
 export default function Voterr({ poll }: { poll: Poll }) {
   const { format } = useFormatDate();
@@ -17,9 +17,13 @@ export default function Voterr({ poll }: { poll: Poll }) {
       <section className="py-6 px-2 space-y-4">
         <header className="flex flex-col items-center rounded-md bg-gray-700 py-4 px-2">
           <h1 className="font-semibold">{poll.title}</h1>
-          <h3>
-            {poll.description} - Valid Until {format(poll.validUntil)}
-          </h3>
+          {poll.validUntil && (
+            <>
+              <h3>
+                {poll.description} - Valid Until {format(poll.validUntil)}
+              </h3>
+            </>
+          )}
         </header>
 
         {!voted && <VoteForm poll={poll} onVoted={onVoted} />}

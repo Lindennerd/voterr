@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { useFormatDate } from "../../hooks/useFormatDate";
 import { usePolls } from "../../hooks/usePolls";
-import { Option, Poll } from "../../types/polls";
+import { Poll } from "../../types/polls";
 
 export default function PollPage(props: { poll: Poll }) {
   const { format } = useFormatDate();
@@ -37,7 +36,10 @@ export default function PollPage(props: { poll: Poll }) {
       <header className="flex flex-col items-center rounded-md bg-gray-700 py-4 px-2">
         <h1 className="font-semibold">{poll.title}</h1>
         <h3>
-          {poll.description} - Valid Until {format(poll.validUntil)}
+          {poll.description}{" "}
+          {poll.validUntil && (
+            <span>- Valid Until {format(poll.validUntil)}</span>
+          )}
         </h3>
         <Link
           href={`/voterr/${poll.id}`}

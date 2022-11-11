@@ -1,7 +1,6 @@
 import { PocketbaseClient } from "../lib/pocketbase.client";
 import { ListRequest } from "../types/pocketbase";
-import { Poll, Option, VotedEvent } from "../types/polls";
-import { Record } from "pocketbase";
+import { Option, Poll, VotedEvent } from "../types/polls";
 
 export function usePolls() {
   const pb = PocketbaseClient.getInstance();
@@ -45,7 +44,7 @@ export function usePolls() {
         text: it.text,
         description: it.description,
         votes: it.votes,
-        poll: poll.id
+        poll: poll.id,
       }));
 
       return poll;
@@ -56,10 +55,10 @@ export function usePolls() {
       callback: (record: VotedEvent) => void
     ) => {
       await pb.client.realtime.unsubscribe();
-      await pb.client.realtime.subscribe('votedEvent', e => {
+      await pb.client.realtime.subscribe("votedEvent", (e) => {
         const event = e.record as unknown as VotedEvent;
-        if(event.poll === pollId) callback(event);
-      })
+        if (event.poll === pollId) callback(event);
+      });
     },
 
     vote: async (optionId: string): Promise<Option> => {
@@ -72,12 +71,38 @@ export function usePolls() {
         votes: option.votes + 1,
       });
 
-      await pb.client.records.create('votedEvent', {
+      await pb.client.records.create("votedEvent", {
         option: optionId,
-        poll: option.poll
+        poll: option.poll,
       });
 
       return response as unknown as Option;
+    },
+
+    create: async (poll: Poll): Promise<Poll> => {
+      poll.createdBy = "hpganpcqe7g0cv0";
+      poll.slug = poll.title.replace(" ", "-");
+      const createdPoll = (await pb.client.records.create(
+        "poll",
+        poll
+      )) as unknown as Poll;
+
+      if (!poll.options) throw new Error("Can't have a poll without options");
+
+      for (let i in poll.options) {
+        const option = poll.options[i];
+        if (!createdPoll.options) createdPoll.options = [];
+
+        createdPoll.options.push(
+          (await pb.client.records.create("options", {
+            text: option.text,
+            description: option.description,
+            poll: createdPoll.id,
+          })) as unknown as Option
+        );
+      }
+
+      return createdPoll;
     },
   };
 }
