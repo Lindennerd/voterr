@@ -47,7 +47,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <a
             href="https://github.com/lindennerd"
             target="_blank"
-            className="text-purple-400 border-b border-purple-400"
+            className="text-purple-400 border-b border-purple-400" rel="noreferrer"
           >
             Lindennerd
           </a>{" "}
